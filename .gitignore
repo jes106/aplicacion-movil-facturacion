@@ -45,3 +45,6 @@ backend/__pycache__
 
 # Data
 backend/secret.py
+
+# VSCode
+.vscode/
