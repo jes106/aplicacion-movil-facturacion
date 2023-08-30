@@ -18,7 +18,7 @@ Se ejecutará siempre que se cumplan las dependencias requeridas
 
 ### Construido con 🛠️
 
-* [React](https://es.reactjs.org/) - El framework web usado
+* [React Native](https://reactnative.dev/) - El framework web usado
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - El framework web usado
 * [Python](https://www.python.org/) - Lenguaje de programación
 * [Yarn](https://yarnpkg.com/) - Manejador de dependencias
