@@ -15,6 +15,7 @@ export default function Home({navigation}) {
     <View>
         <Button style={styles.buttonStyle} mode = "contained" onPress={() => navigation.navigate('Crear Cliente')}>Crear Cliente</Button>
         <Button style={styles.buttonStyle} mode = "contained" onPress={() => navigation.navigate('Listado de Clientes')}>Listado de Clientes</Button>
+        <Button style={styles.buttonStyle} mode = "contained" onPress={() => navigation.navigate('Crear Factura')}>Crear Factura</Button>
     </View>
   )
 }

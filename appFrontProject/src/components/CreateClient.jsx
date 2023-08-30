@@ -1,7 +1,7 @@
 import React from 'react'
-import {ScrollView, Text, StyleSheet} from 'react-native'
+import {ScrollView, Text, StyleSheet, KeyboardAvoidingView, View} from 'react-native'
 import { TextInput, Button } from 'react-native-paper';
-import * as global from '../assets/global.js'
+import * as global from '../../assets/global.js'
 
 export default function CreateClient(props) {
 
@@ -41,7 +41,7 @@ export default function CreateClient(props) {
         inputStyle:{
             margin: 10,
             padding: 10,
-            alignItems: 'right',
+            allignItems: 'right',
         },
 
         titleStyle:{
@@ -52,7 +52,9 @@ export default function CreateClient(props) {
     });
 
   return (
+    <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={300}>
     <ScrollView>
+        <View>
         <TextInput style = {style.inputStyle} label = "Razón Social" value={razonSocial} onChangeText={text => setRazonSocial(text)} />
         <TextInput style = {style.inputStyle} label = "Nombre" value = {nombre} onChangeText={text => setNombre(text)}></TextInput>
         <TextInput style = {style.inputStyle} label = "NIF" value={nif} onChangeText={text => setNif(text)} />
@@ -61,7 +63,9 @@ export default function CreateClient(props) {
         <TextInput style = {style.inputStyle} label = "Teléfono" value={telefono} onChangeText={text => setTelefono(text)} />
 
         <Button style = {style.inputStyle} icon = "plus" mode="contained" onPress={() => insertClient()}>Crear Cliente </Button>
+        </View>
     </ScrollView>
+    </KeyboardAvoidingView>
   )
 
 

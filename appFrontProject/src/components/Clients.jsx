@@ -1,42 +1,35 @@
 import React, {useState, useEffect} from 'react'
-import { View , Text, StyleSheet, Button, FlatList} from "react-native"
+import { ScrollView , Text, StyleSheet, Button, FlatList} from "react-native"
 import {DataTable} from 'react-native-paper'
-import * as global from '../assets/global.js'
+import * as global from '../../assets/global.js'
+import getClientes from '../data/clientes.js'
 
 
-function Clients (propss) {
+
+function Clients (props) {
+    
     const [data, setData] = useState([]);
+    useEffect( () => {
+        setData(getClientes())
+    },[])
 
-    const [loading, setIsLoading] = useState(true);
-
-    useEffect(() =>{
-        fetch(global.API+'/getClients', {
-            method: 'GET',
-            mode: 'cors',
-        })
-        .then(resp => resp.json())
-        .then(clients=> {
-            setData(clients)
-            setIsLoading(false)
-        })
-
-    }, []);
 
     const eliminarCliente = (id) => {
         fetch(global.API+'/deleteClient/'+id, {
             method: 'DELETE',
             mode: 'cors',
         })
-        .then(resp => resp.json())
-        .then(data => {
-            props.navigation.navigate('Listado de Clientes');
+        .then(()=>{
+            setData(getClientes())
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            throw error;
+        })
     }
 
 
     return (
-        <View>
+        <ScrollView>
             <DataTable>
                 <DataTable.Header>
                     <DataTable.Title>Razón Social</DataTable.Title>
@@ -44,6 +37,7 @@ function Clients (propss) {
                     <DataTable.Title>Dirección</DataTable.Title>
                     <DataTable.Title>Población</DataTable.Title>
                     <DataTable.Title>Telefono</DataTable.Title>
+                    <DataTable.Title>Acciones</DataTable.Title>
                 </DataTable.Header>
                 {data.map(cliente => (
                     <DataTable.Row key={cliente.id}>
@@ -52,10 +46,11 @@ function Clients (propss) {
                         <DataTable.Cell>{cliente.direccion}</DataTable.Cell>
                         <DataTable.Cell>{cliente.poblacion}</DataTable.Cell>
                         <DataTable.Cell>{cliente.telefono}</DataTable.Cell>
+                        <DataTable.Cell><Button mode = "contained" onPress={() => eliminarCliente(cliente.id)} title="🗑"></Button></DataTable.Cell>
                     </DataTable.Row>
                 ))}
             </DataTable>
-        </View>
+        </ScrollView>
     );
 }
 

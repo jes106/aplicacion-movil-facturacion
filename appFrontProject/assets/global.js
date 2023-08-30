@@ -1,3 +1,3 @@
 //VARIABLES GLOBALES
 
-export var API = 'http://127.0.0.1:5000';
+export var API = 'http://192.168.100.9:5000';
