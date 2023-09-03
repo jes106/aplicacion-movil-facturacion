@@ -11,6 +11,7 @@ const theme={
     },
     fonts:{
         main: 'System',
+        bold : 'open-sans-bold',
     },
     padding:{
         small:'5',
@@ -18,3 +19,5 @@ const theme={
         large:'15',
     }
 }
+
+export default theme;
