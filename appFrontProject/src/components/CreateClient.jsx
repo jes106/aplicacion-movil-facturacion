@@ -1,7 +1,7 @@
 import React from 'react'
 import {ScrollView, Text, StyleSheet, KeyboardAvoidingView, View} from 'react-native'
 import { TextInput, Button } from 'react-native-paper';
-import * as global from '../../assets/global.js'
+import {REACT_APP_API_NAME} from '@env';
 
 export default function CreateClient(props) {
 
@@ -13,7 +13,7 @@ export default function CreateClient(props) {
     const [telefono, setTelefono] = React.useState('');
 
     const insertClient = () => {
-        fetch(global.API+'/newClient', {
+        fetch(REACT_APP_API_NAME+'/newClient', {
             method: 'POST',
             mode: 'cors',
             headers: {

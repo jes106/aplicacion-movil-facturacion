@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ScrollView, Text, StyleSheet, KeyboardAvoidingView, View } from 'react-native'
 import { TextInput, Button } from 'react-native-paper';
-import * as global from '../../assets/global.js'
+import {REACT_APP_API_NAME} from '@env';
 import DropDownPicker from 'react-native-dropdown-picker';
 import {Dimensions} from 'react-native'
 
@@ -18,7 +18,7 @@ export default function CreateInvoice(props) {
     const [inputList, setInputList] = useState([]);
 
     useEffect(() => {
-        fetch(global.API + '/getClientsSimplificado', {
+        fetch(REACT_APP_API_NAME + '/getClientsSimplificado', {
             method: 'GET',
             mode: 'cors',
             headers: {

@@ -1,15 +1,16 @@
 import React from 'react'
 import {Text, StyleSheet} from 'react-native'
+import theme from '../theme'
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: 'open-sans'
+        fontFamily: theme.fonts.main
     },
     bold: {
-        fontFamily: 'open-sans-bold'
+        fontFamily: theme.fonts.bold
     },
     blue: {
-        color: 'blue'
+        color: theme.color.secondary
     }
 })
 

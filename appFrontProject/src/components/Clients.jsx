@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { ScrollView , Text, StyleSheet, Button, FlatList} from "react-native"
 import {DataTable} from 'react-native-paper'
-import * as global from '../../assets/global.js'
+import {REACT_APP_API_NAME} from '@env';
 import getClientes from '../data/clientes.js'
 
 
@@ -10,12 +10,28 @@ function Clients (props) {
     
     const [data, setData] = useState([]);
     useEffect( () => {
-        setData(getClientes())
+        fetch(REACT_APP_API_NAME + '/getClients', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Allow-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods': '*',
+            },
+        })
+            .then(resp => resp.json())
+            .then(clients => {
+                 setData(clients);
+            })
+            .catch(error => {
+                throw error;
+            })
     },[])
 
 
     const eliminarCliente = (id) => {
-        fetch(global.API+'/deleteClient/'+id, {
+        fetch(API_NAME+'/deleteClient/'+id, {
             method: 'DELETE',
             mode: 'cors',
         })
