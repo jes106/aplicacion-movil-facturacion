@@ -1,3 +1,0 @@
-//VARIABLES GLOBALES
-
-export var API = 'http://192.168.100.9:5000';
