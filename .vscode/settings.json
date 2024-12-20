@@ -1,0 +1,13 @@
+{
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null,
+    "javascript.format.enable": false,
+    "typescript.format.enable": false,
+    "prettier.disableLanguages": ["javascript", "javascriptreact"],
+    "[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": false
+    }
+} 
